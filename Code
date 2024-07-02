@@ -1,0 +1,80 @@
+
+{
+  "nbformat": 4,
+  "nbformat_minor": 0,
+  "metadata": {
+    "colab": {
+      "provenance": [],
+      "gpuType": "T4",
+      "authorship_tag": "ABX9TyMDC/OT5UGV/YKI+LaIKgp9",
+      "include_colab_link": true
+    },
+    "kernelspec": {
+      "name": "python3",
+      "display_name": "Python 3"
+    },
+    "language_info": {
+      "name": "python"
+    },
+    "accelerator": "GPU"
+  },
+  "cells": [
+    {
+      "cell_type": "markdown",
+      "metadata": {
+        "id": "view-in-github",
+        "colab_type": "text"
+      },
+      "source": [
+        "<a href=\"https://colab.research.google.com/github/SATVIK202004/CodeAlpha_Chatbot-for-FAQs/blob/main/CodeAlpha_Chatbot_for_FAQs_TASK2_.ipynb\" target=\"_parent\"><img src=\"https://colab.research.google.com/assets/colab-badge.svg\" alt=\"Open In Colab\"/></a>"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "id": "CuTzl19Yn3Cj",
+        "colab": {
+          "base_uri": "https://localhost:8080/"
+        },
+        "outputId": "fd059f33-22b4-4522-804f-58e7900ee1ea"
+      },
+      "outputs": [
+        {
+          "output_type": "stream",
+          "name": "bot",
+          "text": [
+            "Welcome to the FAQ Bot created by Abobakr. Type 'quit' to exit.\n",
+            "You: what's your name?\n",
+            "FAQ Bot: I'm the FAQ Bot, created by Abobakr. How can I help you?\n"
+          ]
+        }
+      ],
+      "source": [
+        "import re\n",
+        "responses = {\n",
+        "    r\"(?i)what is your name\\??\": \"I'm the FAQ Bot, created by Abobakr. How can I help you?\",\n",
+        "    r\"(?i)what can you do\\??\": \"I can answer frequently asked questions about the topic or product. Feel free to ask!\",\n",
+        "    r\"(?i)how can i contact support\\??\": \"You can contact support by emailing bakrmohamed2280@gmail.com or calling +20109173868.\",\n",
+        "    r\"(?i)what are your hours of operation for this task with which organisation\\??\": \"Abobakr is working as an intern in CodeAlpha, which is the organization behind this chatbot.\",\n",
+        "}\n",
+        "def chat():\n",
+        "    print(\"Welcome to the FAQ Bot created by Abobakr. Type 'quit' to exit.\")\n",
+        "    while True:\n",
+        "        user_input = input(\"You: \")\n",
+        "        if user_input.lower() == 'quit':\n",
+        "            break\n",
+        "        else:\n",
+        "            response = generate_response(user_input)\n",
+        "            print(\"FAQ Bot:\", response)\n",
+        "def generate_response(user_input):\n",
+        "    for pattern, response in responses.items():\n",
+        "        if re.match(pattern, user_input):\n",
+        "            return response\n",
+        "    return \"I'm sorry, I don't understand that. Please ask another question.\"\n",
+        "if __name__ == \"__main__\":\n",
+        "    chat()\n"
+      ]
+    }
+  ]
+}
